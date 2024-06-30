@@ -12,6 +12,7 @@ import ContactUs from "./pages/ContactUs";
 import Checkout from "./pages/Checkout";
 import BookingForm from "./pages/BookingForm";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
 	return (
@@ -68,6 +69,7 @@ function App() {
 						element={<Testimonials />}
 					/>
 				</Routes>
+				<Footer />
 			</Router>
 		</div>
 	);

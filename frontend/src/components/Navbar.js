@@ -11,6 +11,7 @@ const Navbar = () => {
 				className="logo"
 			>
 				Aduqueens
+				<span>Catering Services</span>
 			</Link>
 
 			<nav>

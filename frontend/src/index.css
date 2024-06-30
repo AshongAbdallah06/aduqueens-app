@@ -1,19 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Ingrid+Darling&family=Inter:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
 :root {
 	--red: rgb(232, 16, 16);
-}
-
-body {
-	background-color: var(--red);
-	margin-top: 5rem;
-	background-color: #171616;
+	--orange: #ff7033;
 }
 
 * {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
-	font-family: Arial;
+	font-family: "Noto Sans", sans-serif;
 	color: white;
+}
+
+html {
+	width: 100%;
+}
+
+.App {
+	background-color: var(--red);
+	margin-top: 5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	width: 100%;
+	background-color: #171616;
 }
 
 button,
@@ -39,19 +52,27 @@ a {
 
 /* Header & Nav */
 header {
-	background-color: rgb(253, 99, 22);
+	background-color: var(--orange);
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
-	width: 100%;
+	min-width: 16rem;
 	height: 5rem;
 	padding: 1rem 2rem;
 }
 
 .logo {
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 	font-weight: 700;
+	line-height: 1.5rem;
+}
+
+.logo span {
+	font-family: "Ingrid Darling", cursive;
+	font-weight: 500;
+	display: block;
+	font-size: 1.5rem;
 }
 
 nav {
@@ -123,4 +144,175 @@ ul {
 
 .bars .disappear {
 	display: none;
+}
+
+/* Body */
+main {
+	min-width: 16rem;
+}
+.hero-bg {
+	position: relative;
+}
+.hero-bg span {
+	content: "";
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	font-size: 2rem;
+	color: white;
+	opacity: 100%;
+	text-align: center;
+	font-size: 1.5rem;
+	top: 0;
+}
+.hero {
+	width: 100%;
+	opacity: 39%;
+}
+
+.section-container {
+	padding: 2rem;
+}
+
+/* Sections */
+.section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 3rem;
+	width: 100%;
+}
+.section:first-child {
+	margin-top: 0;
+}
+
+.section h1 {
+	font-size: 1.7rem;
+	font-weight: 600;
+	letter-spacing: 0.1rem;
+}
+.section .label {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 2rem;
+}
+
+.section .line-under {
+	background-color: white;
+	height: 0.15rem;
+	margin-top: 0.5rem;
+	width: 50px;
+}
+
+/* Services Section */
+.services-section ul {
+	display: flex;
+	flex-direction: column;
+}
+.services-section ul li {
+	display: flex;
+	margin-bottom: 2rem;
+}
+.services-section ul li .number {
+	margin-right: 1rem;
+	background-color: var(--orange);
+	vertical-align: top;
+	min-width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Inter", sans-serif;
+}
+.services-section ul li .name {
+	font-size: 1.2rem;
+}
+.services-section ul li span {
+	max-width: 15rem;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	position: relative;
+}
+.view-more {
+	color: var(--orange);
+	background: transparent;
+	border: none;
+	font-size: 1.25rem;
+}
+
+/* Menus Section */
+.menus-section {
+	margin-top: 3rem;
+}
+.menus-section p {
+	font-size: 1.25rem;
+	text-align: center;
+}
+.carousel {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+.carousel img {
+	max-width: 8rem;
+	height: 13rem;
+	margin-top: 3rem;
+	border-radius: 1rem;
+}
+.carousel img:first-child {
+	transform: rotate(-25deg);
+}
+.carousel img:last-child {
+	transform: rotate(25deg);
+}
+.carousel img:nth-child(2) {
+	position: absolute;
+	z-index: 10;
+}
+.menus-section .view-more {
+	margin-top: 2rem;
+}
+
+/* Social Media */
+.social-media {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+.social-media span {
+	margin-left: 1rem;
+	font-size: 1.125rem;
+}
+.social-media-icons {
+	max-height: 2rem;
+}
+
+/* Footer */
+footer {
+	background-color: var(--orange);
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 5rem;
+}
+footer p {
+	font-size: 1.25rem;
+}
+footer span {
+	font-size: 0.9375rem;
 }
