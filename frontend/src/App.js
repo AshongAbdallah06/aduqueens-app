@@ -69,7 +69,7 @@ function App() {
 						element={<Testimonials />}
 					/>
 				</Routes>
-				<Footer />
+				{/* <Footer /> */}
 			</Router>
 		</div>
 	);
