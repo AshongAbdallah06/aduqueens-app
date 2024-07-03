@@ -1,20 +1,14 @@
 require("dotenv").config();
-const sgMail = require("@sendgrid/mail");
 const express = require("express");
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
+const appRoutes = require("./routes/appRoutes");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
-// const msg = {
-// 	to: "ashongabdalla15@gmail.com",
-// 	from: "ashongabdalla15@gmail.com",
-// 	subject: "Sending with Twilio SendGrid is Fun",
-// 	text: "and easy to do anywhere, even with Node.js",
-// 	html: "<strong>and easy to do anywhere, even with Node.js</strong>",
-// };
-// sgMail.send(msg);
+const app = express();
 
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
-const app = express();
 
 mongoose
 	.connect(MONGO_URI)
@@ -26,3 +20,23 @@ mongoose
 	.catch((err) => {
 		console.log(err);
 	});
+
+// Middleware
+app.use(
+	cors({
+		origin: "http://localhost:3000",
+		methods: ["GET", "POST", "PATCH", "DELETE"],
+		credentials: true,
+	})
+);
+
+app.use((req, res, next) => {
+	next();
+});
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+// Routes
+app.use("/api/user", appRoutes);

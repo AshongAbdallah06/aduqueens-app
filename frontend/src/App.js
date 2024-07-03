@@ -12,9 +12,11 @@ import ContactUs from "./pages/ContactUs";
 import Checkout from "./pages/Checkout";
 import BookingForm from "./pages/BookingForm";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 
 function App() {
+	const user = JSON.parse(localStorage.getItem("user"));
+
 	return (
 		<div className="App">
 			<Router>
@@ -22,54 +24,54 @@ function App() {
 				<Routes>
 					<Route
 						path="/"
-						element={<Home />}
+						element={user ? <Home /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/about"
-						element={<About />}
+						element={user ? <About /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/booking"
-						element={<BookingForm />}
+						element={user ? <BookingForm /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/checkout"
-						element={<Checkout />}
+						element={user ? <Checkout /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/contact"
-						element={<ContactUs />}
+						element={user ? <ContactUs /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/faq"
-						element={<FAQ />}
+						element={user ? <FAQ /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/gallery"
-						element={<Gallery />}
+						element={user ? <Gallery /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/menus"
-						element={<Menus />}
+						element={user ? <Menus /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/place-order"
-						element={<PlaceOrder />}
+						element={user ? <PlaceOrder /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/login"
-						element={<Login />}
+						element={!user ? <Login /> : <Navigate to="/" />}
 					/>
 					<Route
 						path="/signup"
-						element={<Signup />}
+						element={!user ? <Signup /> : <Navigate to="/" />}
 					/>
 					<Route
 						path="/testimonials"
-						element={<Testimonials />}
+						element={user ? <Testimonials /> : <Navigate to="/login" />}
 					/>
 				</Routes>
-				<Footer />
+				{/* <Footer /> */}
 			</Router>
 		</div>
 	);
