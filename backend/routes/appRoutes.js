@@ -1,12 +1,12 @@
 const { Router } = require("express");
 const { signup, login } = require("../controllers/appControllers");
+const { requireAuth } = require("../middleware/authMiddleware");
 
 const router = Router();
 
+router.use(requireAuth);
 router.get("/", async (req, res) => {
-	// const
 	res.json({ msg: "Hello" });
-	console.log("Body");
 });
 
 router.post("/signup", signup);

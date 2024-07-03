@@ -6,17 +6,17 @@ const useLogin = () => {
 
 	const login = async (email, password) => {
 		const body = { email, password };
-		console.log("Body:", body);
 
 		try {
-			const res = await Axios.post("http://localhost:3001/api/user/login", body);
+			const res = await Axios.post("http://localhost:3001/api/user/login", body, {
+				withCredentials: true,
+			});
 			const data = await res.data;
 
-			console.log("Login Successful", data);
+			localStorage.setItem("user", JSON.stringify(data));
+
 			window.location.href = "/";
 		} catch (err) {
-			console.log("Error: ", err.response.data.password);
-			console.log("Error: ", err.response.data);
 			setError({
 				emailError: err.response.data.email,
 				passwordError: err.response.data.password,

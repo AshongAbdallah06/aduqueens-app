@@ -6,19 +6,19 @@ const useSignup = () => {
 
 	const signup = async (email, password) => {
 		const body = { email, password };
-		console.log(body);
 
 		try {
-			const res = await Axios.post("http://localhost:3001/api/user/signup", body);
+			const res = await Axios.post("http://localhost:3001/api/user/signup", body, {
+				withCredentials: true,
+			});
 			const data = await res.data;
 
-			console.log("Sucefully Posted", data);
+			localStorage.setItem("user", JSON.stringify(data));
 			window.location.href = "/";
 		} catch (err) {
-			console.log("Error: ", err.response.data.errors);
 			setError({
-				emailError: err.response.data.errors.email.message,
-				passwordError: err.response.data.errors.password.message,
+				emailError: err.response.data.email,
+				passwordError: err.response.data.password,
 			});
 		}
 	};

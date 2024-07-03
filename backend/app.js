@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const appRoutes = require("./routes/appRoutes");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
@@ -30,13 +31,12 @@ app.use(
 );
 
 app.use((req, res, next) => {
-	console.log(req.path, req.method);
-
 	next();
 });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 // Routes
 app.use("/api/user", appRoutes);
