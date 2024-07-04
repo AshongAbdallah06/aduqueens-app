@@ -62,4 +62,13 @@ const login = async (req, res) => {
 	}
 };
 
-module.exports = { signup, login };
+const logout = (req, res) => {
+	try {
+		res.cookie("jwt", "", { maxAge: 1 });
+		res.status(200).json({ msg: "Logged out" });
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+module.exports = { signup, login, logout };
