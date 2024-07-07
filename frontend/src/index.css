@@ -23,6 +23,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
+	position: relative;
 }
 
 .App {
@@ -83,40 +84,58 @@ nav {
 	display: flex;
 }
 
-ul {
-	list-style: none;
-	width: 100%;
+/* .nav-links, */
+.no-scroll {
+	overflow: hidden;
 }
-
+.sidebar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: black;
+	opacity: 0.5;
+	z-index: 50;
+}
 .nav-links {
-	background-color: white;
-	position: absolute;
-	top: 5rem;
-	right: 2rem;
-	display: flex;
-	width: 10rem;
-	height: 10rem;
-	padding: 1rem;
+	background-color: black;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	display: block;
 	flex-direction: column;
+	width: 15rem;
+	z-index: 1000;
+	color: white;
+	padding: 1rem;
+	text-align: center;
+	padding-top: 3rem;
 }
 
 .nav-links a {
-	padding: 0.5rem;
+	padding: 1rem;
 	font-weight: 500;
+	display: block;
+	text-align: center;
 	font-size: 1.2rem;
-	color: black;
 }
 
-.nav-links::after {
-	content: "";
-	display: block;
-	background-color: white;
-	width: 1.5rem;
-	height: 1.5rem;
+.nav-links .bars {
 	position: absolute;
-	transform: rotate(45deg);
-	top: -0.6rem;
-	right: 0.5rem;
+	right: 1rem;
+	top: 1rem;
+}
+
+.logout {
+	background-color: var(--orange);
+	width: 80%;
+	padding: 0.5rem;
+	border: none;
+	margin-top: 15rem;
+	text-align: center;
+	font-weight: 700;
 }
 
 /* Bars */

@@ -10,7 +10,6 @@ const Home = () => {
 	return (
 		<main>
 			<HeroSection />
-
 			<div className="section-container">
 				<ServicesSection />
 

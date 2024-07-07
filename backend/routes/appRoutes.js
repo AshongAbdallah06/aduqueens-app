@@ -4,15 +4,15 @@ const { requireAuth } = require("../middleware/authMiddleware");
 
 const router = Router();
 
-router.use(requireAuth);
-router.get("/", async (req, res) => {
-	res.json({ msg: "Hello" });
-});
-
 router.post("/signup", signup);
-
 router.post("/login", login);
-
 router.get("/logout", logout);
+
+// Protect all routes below this middleware
+router.use(requireAuth);
+
+router.get("/auth", async (req, res) => {
+	res.json({ msg: "Authorized" });
+});
 
 module.exports = router;

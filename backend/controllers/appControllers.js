@@ -37,7 +37,6 @@ const signup = async (req, res) => {
 		const user = await User.create(req.body);
 
 		const token = await createToken(user._id);
-		res.cookie("jwt", token, { maxAge: maxAge * 1000 });
 
 		res.status(200).json({ email, token });
 	} catch (error) {
@@ -53,7 +52,6 @@ const login = async (req, res) => {
 		const user = await User.login(email, password);
 
 		const token = await createToken(user._id);
-		res.cookie("jwt", token, { maxAge: maxAge * 1000 });
 
 		res.status(200).json({ email, token });
 	} catch (error) {
@@ -68,6 +66,7 @@ const logout = (req, res) => {
 		res.status(200).json({ msg: "Logged out" });
 	} catch (error) {
 		console.log(error);
+		res.status(400).json(error);
 	}
 };
 
