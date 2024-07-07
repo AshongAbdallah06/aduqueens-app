@@ -12,10 +12,19 @@ import ContactUs from "./pages/ContactUs";
 import Checkout from "./pages/Checkout";
 import BookingForm from "./pages/BookingForm";
 import Navbar from "./components/Navbar";
-// import Footer from "./components/Footer";
+import { useEffect } from "react";
+import useCheckAuth from "./hooks/useCheckAuth";
 
 function App() {
-	const user = JSON.parse(localStorage.getItem("user"));
+	const { checkAuth, isAccessDenied, isLoading } = useCheckAuth();
+
+	useEffect(() => {
+		checkAuth();
+	}, [checkAuth]);
+
+	if (isLoading) {
+		return;
+	}
 
 	return (
 		<div className="App">
@@ -24,51 +33,51 @@ function App() {
 				<Routes>
 					<Route
 						path="/"
-						element={user ? <Home /> : <Navigate to="/login" />}
+						element={!isAccessDenied ? <Home /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/about"
-						element={user ? <About /> : <Navigate to="/login" />}
+						element={!isAccessDenied ? <About /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/booking"
-						element={user ? <BookingForm /> : <Navigate to="/login" />}
+						element={!isAccessDenied ? <BookingForm /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/checkout"
-						element={user ? <Checkout /> : <Navigate to="/login" />}
+						element={!isAccessDenied ? <Checkout /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/contact"
-						element={user ? <ContactUs /> : <Navigate to="/login" />}
+						element={!isAccessDenied ? <ContactUs /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/faq"
-						element={user ? <FAQ /> : <Navigate to="/login" />}
+						element={!isAccessDenied ? <FAQ /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/gallery"
-						element={user ? <Gallery /> : <Navigate to="/login" />}
+						element={!isAccessDenied ? <Gallery /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/menus"
-						element={user ? <Menus /> : <Navigate to="/login" />}
+						element={!isAccessDenied ? <Menus /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/place-order"
-						element={user ? <PlaceOrder /> : <Navigate to="/login" />}
+						element={!isAccessDenied ? <PlaceOrder /> : <Navigate to="/login" />}
 					/>
 					<Route
 						path="/login"
-						element={!user ? <Login /> : <Navigate to="/" />}
+						element={isAccessDenied ? <Login /> : <Navigate to="/" />}
 					/>
 					<Route
 						path="/signup"
-						element={!user ? <Signup /> : <Navigate to="/" />}
+						element={isAccessDenied ? <Signup /> : <Navigate to="/" />}
 					/>
 					<Route
 						path="/testimonials"
-						element={user ? <Testimonials /> : <Navigate to="/login" />}
+						element={!isAccessDenied ? <Testimonials /> : <Navigate to="/login" />}
 					/>
 				</Routes>
 				{/* <Footer /> */}
